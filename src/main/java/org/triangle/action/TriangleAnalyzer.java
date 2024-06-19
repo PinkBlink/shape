@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class TriangleAnalyzer {
+
     private final Triangle triangle;
     private final double firstSide;
     private final double secondSide;
