@@ -66,11 +66,6 @@ public class Triangle {
                 (2 * secondSide * thirdSide)));
     }
 
-    public boolean isRightTriangle() {
-        int rightAngle = 90;
-        return (int) (firstAngle) == rightAngle || (int) (secondAngle) == rightAngle || (int) (thirdAngle) == rightAngle;
-    }
-
     private void calculateCharacteristicsOfTriangle() {
         this.firstSide = calculateSide(a, b);
         this.secondSide = calculateSide(b, c);
@@ -79,7 +74,6 @@ public class Triangle {
         this.secondAngle = calculateAngle(secondSide, thirdSide, firstSide);
         this.thirdAngle = calculateAngle(thirdSide, firstSide, secondSide);
     }
-
 
     @Override
     public String toString() {

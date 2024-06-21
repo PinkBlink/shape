@@ -9,6 +9,7 @@ public class UtilsForDouble {
         bd = bd.setScale(2, RoundingMode.HALF_UP);
         return bd.doubleValue();
     }
+
     public static int hashDouble(double d) {
         long longDouble = Double.doubleToLongBits(d);
         return (int) (longDouble ^ (longDouble >>> 32));

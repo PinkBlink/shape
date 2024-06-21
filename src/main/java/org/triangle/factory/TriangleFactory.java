@@ -8,17 +8,29 @@ import org.triangle.entity.Triangle;
 import org.triangle.exception.CollinearPointsException;
 import org.triangle.utils.Inspector;
 
+import java.util.List;
+
 
 public class TriangleFactory {
-    public static Logger logger = LogManager.getLogger(TriangleFactory.class);
+    public final Logger logger = LogManager.getLogger(TriangleFactory.class);
+    private final PointFactory pointFactory = new PointFactory();
+
     public Triangle getTriangle(Point a, Point b, Point c) {
-        Triangle t = new Triangle(a, b, c);
-        if (Inspector.isValidTriangle(t)) {
-            logger.log(Level.INFO,"Triangle created successfully");
+        if (Inspector.isValidTriangle(a, b, c)) {
+            Triangle t = new Triangle(a, b, c);
+            logger.log(Level.INFO, "Triangle " + t + " created successfully");
             return t;
         } else {
-            logger.log(Level.WARN,"Attempt to create a warning triangle stopped");
+            logger.log(Level.ERROR, "Attempt to create a wrong triangle stopped");
             throw new CollinearPointsException();
         }
+    }
+
+    public Triangle getTriangle(String coordinates) {
+        List<Point> points = pointFactory.getPointListFromString(coordinates);
+        Point firstPoint = points.get(0);
+        Point secondPoint = points.get(1);
+        Point thirdPoint = points.get(2);
+        return getTriangle(firstPoint, secondPoint, thirdPoint);
     }
 }

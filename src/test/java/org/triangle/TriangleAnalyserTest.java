@@ -6,28 +6,67 @@ import org.testng.annotations.Test;
 import org.triangle.entity.Point;
 import org.triangle.entity.Triangle;
 import org.triangle.action.TriangleAnalyzer;
-import org.triangle.exception.CollinearPointsException;
 
 public class TriangleAnalyserTest {
-    Point p1;
-    Point p2;
-    Point p3;
     Triangle triangle;
+    Triangle rightAndScaleneTriangle;
+    Triangle obtuseAndIsoscelesTriangle;
+    Triangle acuteAndScaleneTriangle;
+    Triangle equilateralTriangle;
     TriangleAnalyzer analyzer;
 
     @BeforeTest
     public void setUp() {
-        p1 = new Point(0, 0);
-        p2 = new Point(0, 4);
-        p3 = new Point(4, 4);
-        triangle = new Triangle(p1, p2, p3);
+        triangle = new Triangle(new Point(0, 0), new Point(0, 4), new Point(4, 4));
+        rightAndScaleneTriangle = new Triangle(new Point(0, 0), new Point(3, 0), new Point(0, 4));
+        obtuseAndIsoscelesTriangle = new Triangle(new Point(0, 0), new Point(0, 6), new Point(1, 3));
+        acuteAndScaleneTriangle = new Triangle(new Point(0, 0), new Point(4, 1), new Point(-1, -1));
+        equilateralTriangle = new Triangle(new Point(0, 0), new Point(3, 0), new Point(1.5, 2.598));
         analyzer = new TriangleAnalyzer();
     }
 
     @Test
-    public void testRightTriangle() {
-        Assert.assertTrue(triangle.isRightTriangle(), "must be right");
+    public void testPositiveObtuseTriangleType() {
+        TriangleAnalyzer.TriangleAngleType expected = TriangleAnalyzer.TriangleAngleType.OBTUSE;
+        TriangleAnalyzer.TriangleAngleType actual = analyzer.getTriangleAngleType(obtuseAndIsoscelesTriangle);
+        Assert.assertEquals(actual, expected, "Must be obtuse.");
     }
+
+    @Test
+    public void testPositiveAcuteTriangleType() {
+        TriangleAnalyzer.TriangleAngleType expected = TriangleAnalyzer.TriangleAngleType.OBTUSE;
+        TriangleAnalyzer.TriangleAngleType actual = analyzer.getTriangleAngleType(acuteAndScaleneTriangle);
+        Assert.assertEquals(actual, expected, "Must be acute.");
+    }
+
+    @Test
+    public void testPositiveRightTriangleType() {
+        TriangleAnalyzer.TriangleAngleType expected = TriangleAnalyzer.TriangleAngleType.RIGHT;
+        TriangleAnalyzer.TriangleAngleType actual = analyzer.getTriangleAngleType(rightAndScaleneTriangle);
+        Assert.assertEquals(actual, expected, "Must be right.");
+    }
+
+    @Test
+    public void testPositiveScaleneTriangleType() {
+        TriangleAnalyzer.TriangleSideType expected = TriangleAnalyzer.TriangleSideType.SCALENE;
+        TriangleAnalyzer.TriangleSideType actual = analyzer.getTriangleSideType(rightAndScaleneTriangle);
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test
+    public void testPositiveIsoscelesTriangleType() {
+        TriangleAnalyzer.TriangleSideType expected = TriangleAnalyzer.TriangleSideType.ISOSCELES;
+        TriangleAnalyzer.TriangleSideType actual = analyzer.getTriangleSideType(obtuseAndIsoscelesTriangle);
+        Assert.assertEquals(actual, expected);
+    }
+
+    @Test
+    public void testPositiveEquilateralTriangleType() {
+        TriangleAnalyzer.TriangleSideType expected = TriangleAnalyzer.TriangleSideType.EQUILATERAL;
+        TriangleAnalyzer.TriangleSideType actual = analyzer.getTriangleSideType(equilateralTriangle);
+        Assert.assertEquals(actual, expected);
+    }
+
 
     @Test
     public void testTriangleSquare() {
@@ -42,4 +81,5 @@ public class TriangleAnalyserTest {
         double actualValue = analyzer.getTrianglePerimeter(triangle);
         Assert.assertEquals(actualValue, 13.66, "Must be " + expectedValue + "but is " + actualValue);
     }
+
 }
