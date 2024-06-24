@@ -8,6 +8,6 @@ public class NoFileException extends IOException {
     }
 
     public NoFileException() {
-        super("Problem with file, or path;");
+        super("Problems with the file or path.");
     }
 }

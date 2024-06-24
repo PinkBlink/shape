@@ -11,7 +11,7 @@ public class TriangleFactoryTest {
     TriangleFactory factory = new TriangleFactory();
 
     @Test
-    public void samePointFactoryThrowTest() {
+    public void getTriangle_ParameterSamePoint_ShouldThrowCollinearException() {
         Point samePoint = new Point(0, 0);
         Assert.assertThrows(CollinearPointsException.class, () -> {
             factory.getTriangle(samePoint, samePoint, samePoint);
@@ -19,22 +19,20 @@ public class TriangleFactoryTest {
     }
 
     @Test
-    public void oneLinePointsFactoryThrowTest() {
+    public void getTriangle_ParameterPointsOnOneLine_ShouldThrowCollinearException() {
         Point firstPoint = new Point(1, 1);
         Point secondPoint = new Point(2, 2);
         Point thirdPoint = new Point(3, 3);
-
         Assert.assertThrows(CollinearPointsException.class, () -> {
             factory.getTriangle(firstPoint, secondPoint, thirdPoint);
         });
     }
 
     @Test
-    public void positiveCaseFactoryTest() {
+    public void getTriangle_ParameterValidPoints_ShouldReturnCorrectTriangle() {
         Point firstPoint = new Point(0, 1);
         Point secondPoint = new Point(2, 2);
         Point thirdPoint = new Point(3, -1);
-
         Assert.assertEquals(Triangle.class, factory.getTriangle(firstPoint, secondPoint, thirdPoint).getClass());
     }
 }

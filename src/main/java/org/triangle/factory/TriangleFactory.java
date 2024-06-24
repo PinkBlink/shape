@@ -12,7 +12,7 @@ import java.util.List;
 
 
 public class TriangleFactory {
-    public final Logger logger = LogManager.getLogger(TriangleFactory.class);
+    public static final Logger logger = LogManager.getLogger(TriangleFactory.class);
     private final PointFactory pointFactory = new PointFactory();
 
     public Triangle getTriangle(Point a, Point b, Point c) {

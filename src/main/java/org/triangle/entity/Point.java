@@ -40,9 +40,9 @@ public class Point {
     @Override
     public int hashCode() {
         int total = 31;
-        long lX = Double.doubleToLongBits(x);
-        long lY = Double.doubleToLongBits(y);
-        total = total * 31 + (int) (lX ^ (lX >>> 32)) + (int) (lY ^ (lY >>> 32));
+        long longX = Double.doubleToLongBits(x);
+        long longY = Double.doubleToLongBits(y);
+        total = total * 31 + (int) (longX ^ (longX >>> 32)) + (int) (longY ^ (longY >>> 32));
         return total;
     }
 }

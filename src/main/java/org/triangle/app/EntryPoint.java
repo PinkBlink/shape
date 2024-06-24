@@ -43,7 +43,6 @@ public class EntryPoint {
                 logger.log(Level.INFO, "----> third angle  =" + t.getThirdAngle());
                 logger.log(Level.INFO, "____________________________________-");
             }
-
         } catch (NoFileException e) {
             logger.log(Level.ERROR, e.getMessage());
         }

@@ -8,7 +8,7 @@ import org.triangle.entity.Triangle;
 import org.triangle.utils.Inspector;
 
 public class InspectorTest {
-    String wrongCoordinates;
+    String invalidCoordinates;
     String validCoordinates;
     Triangle invalidTriangle;
     Triangle validTriangle;
@@ -17,27 +17,18 @@ public class InspectorTest {
     public void setUp() {
         invalidTriangle = new Triangle(new Point(0, 0), new Point(0, 1), new Point(0, 0));
         validTriangle = new Triangle(new Point(0, 0), new Point(1, 0), new Point(0, 1));
-        wrongCoordinates = "1.0 0.0 0.0 1.0 0.0 1.2 ";
+        invalidCoordinates = "1.0 0.0 0.0 1.0 0.0 1.2 ";
         validCoordinates = "1.0 0.0 0.0 1.0 0.0 1.2";
     }
-
     @Test
-    public void isValidCoordinatesNegativeTest() {
-        Assert.assertFalse(Inspector.isValidCoordinatesString(wrongCoordinates));
+    public void isValidCoordinatesString_ParameterInvalidCoordinates_ShouldReturnFalse() {
+        boolean result = Inspector.isValidCoordinatesString(invalidCoordinates);
+        Assert.assertFalse(result);
     }
 
     @Test
-    public void isValidCoordinatesPositiveTest() {
-        Assert.assertTrue(Inspector.isValidCoordinatesString(validCoordinates));
+    public void isValidCoordinatesString_ParameterValidCoordinates_ShouldReturnTrue() {
+        boolean result = Inspector.isValidCoordinatesString(validCoordinates);
+        Assert.assertTrue(result);
     }
-
-//    @Test
-//    public void isValidTriangleNegativeTest() {
-//        Assert.assertFalse(Inspector.isValidTriangle(invalidTriangle));
-//    }
-//
-//    @Test
-//    public void isValidTrianglePositiveTest() {
-//        Assert.assertTrue(Inspector.isValidTriangle(validTriangle));
-//    }
 }
