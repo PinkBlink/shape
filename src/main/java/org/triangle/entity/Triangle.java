@@ -92,7 +92,6 @@ public class Triangle {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        //
         Triangle triangle = (Triangle) o;
         return a.equals(triangle.a) && b.equals(triangle.b) && c.equals(triangle.c);
     }
