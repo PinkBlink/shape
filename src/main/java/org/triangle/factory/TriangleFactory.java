@@ -5,8 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.triangle.entity.Point;
 import org.triangle.entity.Triangle;
-import org.triangle.exception.CollinearPointsException;
-import org.triangle.utils.Inspector;
+import org.triangle.utils.TriangleValidator;
 
 import java.util.List;
 
@@ -16,14 +15,10 @@ public class TriangleFactory {
     private final PointFactory pointFactory = new PointFactory();
 
     public Triangle getTriangle(Point a, Point b, Point c) {
-        if (Inspector.isValidTriangle(a, b, c)) {
-            Triangle t = new Triangle(a, b, c);
-            logger.log(Level.INFO, "Triangle " + t + " created successfully");
-            return t;
-        } else {
-            logger.log(Level.ERROR, "Attempt to create a wrong triangle stopped");
-            throw new CollinearPointsException();
-        }
+        TriangleValidator.throwExceptionIfInvalidTriangle(a, b, c);
+        Triangle triangle = new Triangle(a, b, c);
+        logger.log(Level.INFO, "Triangle " + triangle + " created successfully");
+        return triangle;
     }
 
     public Triangle getTriangle(String coordinates) {

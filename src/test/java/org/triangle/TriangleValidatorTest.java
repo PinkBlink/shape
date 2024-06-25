@@ -5,9 +5,9 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.triangle.entity.Point;
 import org.triangle.entity.Triangle;
-import org.triangle.utils.Inspector;
+import org.triangle.utils.TriangleValidator;
 
-public class InspectorTest {
+public class TriangleValidatorTest {
     String invalidCoordinates;
     String validCoordinates;
     Triangle invalidTriangle;
@@ -21,14 +21,14 @@ public class InspectorTest {
         validCoordinates = "1.0 0.0 0.0 1.0 0.0 1.2";
     }
     @Test
-    public void isValidCoordinatesString_ParameterInvalidCoordinates_ShouldReturnFalse() {
-        boolean result = Inspector.isValidCoordinatesString(invalidCoordinates);
+    public void isValidCoordinatesStringIfInvalidCoordinatesShouldReturnFalseTest() {
+        boolean result = TriangleValidator.isValidCoordinatesString(invalidCoordinates);
         Assert.assertFalse(result);
     }
 
     @Test
-    public void isValidCoordinatesString_ParameterValidCoordinates_ShouldReturnTrue() {
-        boolean result = Inspector.isValidCoordinatesString(validCoordinates);
+    public void isValidCoordinatesStringIfValidCoordinates_ShouldReturnTrueTest() {
+        boolean result = TriangleValidator.isValidCoordinatesString(validCoordinates);
         Assert.assertTrue(result);
     }
 }

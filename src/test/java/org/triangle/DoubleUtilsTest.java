@@ -3,9 +3,9 @@ package org.triangle;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import org.triangle.utils.UtilsForDouble;
+import org.triangle.utils.DoubleUtils;
 
-public class UtilsForDoubleTest {
+public class DoubleUtilsTest {
     private int hashFromDouble;
     private double doubleForHashing;
     private double largeDouble;
@@ -18,14 +18,14 @@ public class UtilsForDoubleTest {
     }
 
     @Test
-    public void hashDouble_ParameterDoubleForHashing_ShouldReturnHashFromDouble() {
-        int actual = UtilsForDouble.hashDouble(doubleForHashing);
+    public void hashDoubleWithDoubleForHashingShouldReturnHashFromDoubleTest() {
+        int actual = DoubleUtils.hashDouble(doubleForHashing);
         Assert.assertEquals(actual, hashFromDouble);
     }
     @Test
-    public void roundToTwoDecimalPlaces_ParameterLargeDouble_ShouldReturnSameDoubleWithTwoDigitsAfterPoint(){
+    public void roundToTwoDecimalPlacesWithLargeDoubleShouldReturnSameDoubleWithTwoDigitsAfterPointTest(){
         double expected = 2.22;
-        double actual = UtilsForDouble.roundToTwoDecimalPlaces(largeDouble);
+        double actual = DoubleUtils.roundToTwoDecimalPlaces(largeDouble);
         Assert.assertEquals(actual,expected);
     }
 }

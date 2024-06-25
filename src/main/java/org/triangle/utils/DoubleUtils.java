@@ -3,11 +3,13 @@ package org.triangle.utils;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class UtilsForDouble {
+public class DoubleUtils {
+    private static final int COUNT_OF_DIGITS = 2;
+
     public static double roundToTwoDecimalPlaces(double value) {
-        BigDecimal bd = BigDecimal.valueOf(value);
-        bd = bd.setScale(2, RoundingMode.HALF_UP);
-        return bd.doubleValue();
+        BigDecimal bigDecimalValue = BigDecimal.valueOf(value);
+        bigDecimalValue = bigDecimalValue.setScale(COUNT_OF_DIGITS, RoundingMode.HALF_UP);
+        return bigDecimalValue.doubleValue();
     }
 
     public static int hashDouble(double d) {

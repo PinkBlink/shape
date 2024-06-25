@@ -7,7 +7,7 @@ import org.triangle.action.TriangleAnalyzer;
 import org.triangle.entity.Triangle;
 import org.triangle.exception.NoFileException;
 import org.triangle.factory.TriangleFactory;
-import org.triangle.utils.ReaderFromFile;
+import org.triangle.utils.CoordinatesFileReader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class EntryPoint {
     public static void main(String[] args) {
         TriangleAnalyzer triangleAnalyzer = new TriangleAnalyzer();
         TriangleFactory triangleFactory = new TriangleFactory();
-        ReaderFromFile readerFromFile = new ReaderFromFile();
+        CoordinatesFileReader readerFromFile = new CoordinatesFileReader();
 
         List<String> coordinates;
         List<Triangle> trianglesFromFile = new ArrayList<>();

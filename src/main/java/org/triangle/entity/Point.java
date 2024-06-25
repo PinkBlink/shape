@@ -1,27 +1,27 @@
 package org.triangle.entity;
 
 public class Point {
-    private final double x;
-    private final double y;
+    private final double xCoordinate;
+    private final double yCoordinate;
 
-    public Point(double x, double y) {
-        this.x = x;
-        this.y = y;
+    public Point(double xCoordinate, double yCoordinate) {
+        this.xCoordinate = xCoordinate;
+        this.yCoordinate = yCoordinate;
     }
 
-    public double getX() {
-        return x;
+    public double getXCoordinate() {
+        return xCoordinate;
     }
 
-    public double getY() {
-        return y;
+    public double getYCoordinate() {
+        return yCoordinate;
     }
 
     @Override
     public String toString() {
         return "Point{" +
-                "x=" + x +
-                ", y=" + y +
+                "x coordinate =" + xCoordinate +
+                ", y coordinate =" + yCoordinate +
                 '}';
     }
 
@@ -34,14 +34,15 @@ public class Point {
             return false;
         }
         Point point = (Point) o;
-        return Double.compare(x, point.x) == 0 && Double.compare(y, point.y) == 0;
+        return Double.compare(xCoordinate, point.xCoordinate) == 0
+                && Double.compare(yCoordinate, point.yCoordinate) == 0;
     }
 
     @Override
     public int hashCode() {
         int total = 31;
-        long longX = Double.doubleToLongBits(x);
-        long longY = Double.doubleToLongBits(y);
+        long longX = Double.doubleToLongBits(xCoordinate);
+        long longY = Double.doubleToLongBits(yCoordinate);
         total = total * 31 + (int) (longX ^ (longX >>> 32)) + (int) (longY ^ (longY >>> 32));
         return total;
     }

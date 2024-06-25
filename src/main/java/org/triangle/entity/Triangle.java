@@ -1,6 +1,6 @@
 package org.triangle.entity;
 
-import org.triangle.utils.UtilsForDouble;
+import org.triangle.utils.DoubleUtils;
 
 public class Triangle {
     private final Point a;
@@ -57,8 +57,8 @@ public class Triangle {
     }
 
     public double calculateSide(Point a, Point b) {
-        double side = Math.sqrt(Math.pow(b.getX() - a.getX(), 2) + Math.pow(b.getY() - a.getY(), 2));
-        return UtilsForDouble.roundToTwoDecimalPlaces(side);
+        double side = Math.sqrt(Math.pow(b.getXCoordinate() - a.getXCoordinate(), 2) + Math.pow(b.getYCoordinate() - a.getYCoordinate(), 2));
+        return DoubleUtils.roundToTwoDecimalPlaces(side);
     }
 
     public double calculateAngle(double firstSide, double secondSide, double thirdSide) {
@@ -93,7 +93,9 @@ public class Triangle {
             return false;
         }
         Triangle triangle = (Triangle) o;
-        return a.equals(triangle.a) && b.equals(triangle.b) && c.equals(triangle.c);
+        return a.equals(triangle.a)
+                && b.equals(triangle.b)
+                && c.equals(triangle.c);
     }
 
     @Override
@@ -102,12 +104,12 @@ public class Triangle {
         total = total * 31 + a.hashCode();
         total = total * 31 + b.hashCode();
         total = total * 31 + c.hashCode();
-        total = total * 31 + UtilsForDouble.hashDouble(firstSide);
-        total = total * 31 + UtilsForDouble.hashDouble(secondSide);
-        total = total * 31 + UtilsForDouble.hashDouble(thirdSide);
-        total = total * 31 + UtilsForDouble.hashDouble(firstAngle);
-        total = total * 31 + UtilsForDouble.hashDouble(secondAngle);
-        total = total * 31 + UtilsForDouble.hashDouble(thirdAngle);
+        total = total * 31 + DoubleUtils.hashDouble(firstSide);
+        total = total * 31 + DoubleUtils.hashDouble(secondSide);
+        total = total * 31 + DoubleUtils.hashDouble(thirdSide);
+        total = total * 31 + DoubleUtils.hashDouble(firstAngle);
+        total = total * 31 + DoubleUtils.hashDouble(secondAngle);
+        total = total * 31 + DoubleUtils.hashDouble(thirdAngle);
         return total;
     }
 }

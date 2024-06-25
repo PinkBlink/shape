@@ -20,14 +20,14 @@ public class PointFactoryTest {
     }
 
     @Test
-    public void getPoint_ShouldCreatePoint() {
+    public void getPointShouldCreatePointTest() {
         Point actual = pointFactory.getPoint(0, 0);
         Point expected = new Point(0, 0);
         Assert.assertEquals(actual, expected);
     }
 
     @Test
-    public void getPointListFromString_ParameterValidCoordinates_ShouldReturnPointList() {
+    public void getPointListFromStringIfValidCoordinatesShouldReturnPointListTest() {
         List<Point> expected = Arrays.asList(new Point(0, 0), new Point(0, 0), new Point(0, 0));
         List<Point> actual = pointFactory.getPointListFromString(coordinates);
         Assert.assertEquals(actual, expected);
